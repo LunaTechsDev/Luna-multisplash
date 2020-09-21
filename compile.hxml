@@ -1,0 +1,46 @@
+-lib LunaTea
+
+-cp src
+# JS Version 
+-D js-es=6
+
+# Enable/Disable console.log -- tracing with the below line
+# --no-traces
+
+-dce full
+
+# Static Code Analysis For Removing  Unnecessary Code
+-D analyzer-optimize 
+
+# Haxe Source Map
+--debug
+# --no-inline
+# --no-opt
+# -D keep_inline_positions
+
+# RM Version for Conditional Compilation
+# -D compileMV
+
+# Note you can call an hxml file inside an hxml file for build purposes.
+# For Compiling Separate JavaScript Files
+
+--macro macros.MacroTools.includeJsLib("./src/Params.js")
+
+-main Main
+--each
+
+--next
+-js dist/Luna_MapNamePlus.js
+--next
+-js ../games/LunaTechsMZ/js/plugins/Luna_MapNamePlus.js
+
+--next 
+-D compileMV
+-js dist/Luna_MapNamePlusMV.js
+--next
+-D compileMV
+-js ../games/LunaTechsMZ/js/plugins/Luna_MapNamePlusMV.js
+
+
+--cmd haxe -D gamePath=../games/LunaTechsMZ --run CleanJs
+
