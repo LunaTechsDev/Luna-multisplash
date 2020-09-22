@@ -1,3 +1,4 @@
+import rm.scenes.Scene_Map;
 import js.Syntax;
 import rm.windows.Window_Base;
 import rm.managers.DataManager;
@@ -51,6 +52,21 @@ class Main {
     trace(LMParams);
 
     Comment.title('Scene_Map');
+
+    var _SceneMapUpdate: JsFn = Scene_Map.proto().updateR;
+    Scene_Map.proto().updateD = () -> {
+      sf(Scene_Map, {
+        _SceneMapUpdate.call(self);
+        if (LMParams.persistent) {
+          // Have to check contents opacity to reopen the window and keep
+          // it persistent on the screen.
+          if (self.__mapNameWindow.contentsOpacity == 0) {
+            self.__mapNameWindow.show();
+            self.__mapNameWindow.open();
+          }
+        }
+      });
+    };
 
     Comment.title('Window_MapName');
     var _WindowmapName_intitialize: JsFn = Window_MapName.proto().initializeR;

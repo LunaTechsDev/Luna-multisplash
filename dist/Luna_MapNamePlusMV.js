@@ -2,7 +2,7 @@
 // Luna_MapNamePlusMV.js
 //=============================================================================
 //=============================================================================
-// Build Date: 2020-09-20 21:55:30
+// Build Date: 2020-09-22 19:13:11
 //=============================================================================
 //=============================================================================
 // Made with LunaTea -- Haxe
@@ -112,12 +112,23 @@ class LunaMapNamePlus {
 		let tmp3 = parseInt(params["marqueeSpeed"],10)
 		let tmp4 = params["persistent"].toUpperCase() == "T"
 		LunaMapNamePlus.LMParams = { x : tmp, y : tmp1, alignment : params["alignment"], animation : params["animation"], marquee : tmp2, marqueeSpeed : tmp3, persistent : tmp4}
-		console.log("src/Main.hx:51:",LunaMapNamePlus.LMParams)
+		console.log("src/Main.hx:52:",LunaMapNamePlus.LMParams)
 		
 //=============================================================================
 // Scene_Map
 //=============================================================================
       
+		let _SceneMapUpdate = Scene_Map.prototype.update
+		Scene_Map.prototype.update = function() {
+			let self = this
+			_SceneMapUpdate.call(self)
+			if(LunaMapNamePlus.LMParams.persistent) {
+				if(self._mapNameWindow.contentsOpacity == 0) {
+					self._mapNameWindow.show()
+					self._mapNameWindow.open()
+				}
+			}
+		}
 		
 //=============================================================================
 // Window_MapName
