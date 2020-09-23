@@ -1,48 +1,19 @@
 /*:
 @author LunaTechs - Kino
-@plugindesc This plugin augments the functionality of the map name window and adds additional effects <LunaMapNamePlus>.
+@plugindesc An RPGMakerMV/MZ plugin that allows you to call an event from any map in your game<LunaCallEvent>.
 
 @target MV MZ
 
-@param x
-@text Window X Position
-@desc The x position of the window.
-@type number
-@default 0
+@command callEvent
+@text Call Event
+@desc Allows you to call an event from any map with any event ID
 
-@param y
-@text Window Y Position
-@desc The y position of the window.
-@type number
-@default 0
-
-@param alignment
-@text Alignment
-@desc Alignment of the text within the window. Choices are 'left' or 'center'.
-@default center
-
-@param animation
-@text Animation
-@desc Whether the map name window stays visible, fades out, etc. Choices are 'persistent' or 'fade'
-@default persistent
-
-@param marquee
-@text Marquee
-@desc Whether the text should scroll across the window. True or False (T/F)
-@default T
-
-@param marqueeSpeed;
-@text Marquee Speed
-@desc Speed of the Marquee
-@default 1
-
-@param persistent
-@text Persistent
-@desc Whether the window map name is persistent after battle or not
-@default T
 
 @help
-This plugin augments the functionality of the map name window and adds additional effects <LunaMapNamePlus>.
+==== How To Use ====
+
+
+An RPGMakerMV/MZ plugin that allows you to call an event from any map in your game.
 
 MIT License
 Copyright (c) 2020 LunaTechsDev

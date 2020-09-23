@@ -1,3 +1,3 @@
-# Luna Map Name Plus 
+# Luna Call Event 
 ### Author LunaTechs - Kino
-> This plugin allows you to augment the functionality of the map name window within RPGMakerMV/MZ.
+> An RPGMakerMV/MZ plugin that allows you to call an event from any map in your game.
