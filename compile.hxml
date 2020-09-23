@@ -36,10 +36,10 @@
 
 --next 
 -D compileMV
--js dist/Luna_CallEvent.js
+-js dist/Luna_CallEventMV.js
 --next
 -D compileMV
--js ../games/LunaTechsMZ/js/plugins/Luna_CallEvent.js
+-js ../games/LunaTechsMZ/js/plugins/Luna_CallEventMV.js
 
 
 --cmd haxe -D gamePath=../games/LunaTechsMZ --run CleanJs
