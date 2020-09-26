@@ -1,20 +1,24 @@
 /*:
 @author LunaTechs - Kino
-@plugindesc An RPGMakerMV/MZ plugin that lets you create links to websites through clickable
-windows.
+@plugindesc A plugin that lets you create links through clickable windows<LunaLinks>.
 
 @target MV MZ
 
-@command callEvent
-@text Call Event
-@desc Allows you to call an event from any map with any event ID
-
+@param linkWindows
+@text Link Windows
+@desc The list of link windows on your title screen.
+@type struct<LinkWindow>[]
 
 @help
+
+An RPGMakerMV/MZ plugin that lets you create links to websites through clickable
+windows<LunaLinks>.
+
 ==== How To Use ====
 
-
-An RPGMakerMV/MZ plugin that allows you to call an event from any map in your game.
+Simply f ill out your link information in the plugin parameters with the proper
+coordinates on the screen. The icon you use for your link will be mapped
+to the size of the window.
 
 MIT License
 Copyright (c) 2020 LunaTechsDev
@@ -35,6 +39,44 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE
 */
 
+/*~struct~LinkWindow:
+*
+* @param link
+* @text Link 
+* @desc The link for the link window
+* @default google.com
+*
+* @param image
+* @text Image Name
+* @desc Name of an image in your pictures folder
+* @default Actor1_1
+*
+* @param x
+* @text X Position
+* @desc The X position of the link window
+* @default 0
+* 
+* @param y
+* @text Y Position
+* @desc The Y position of the link window
+* @default 0
+*
+* @param width
+* @text Width
+* @desc The width of the link window
+* @default 100
+*
+* @param height
+* @text Height 
+* @desc The height of the link window
+* @default 100
+*
+* @param backgroundType
+* @text Background Type 0 -> Opaque 1 -> Semitransparent 2 -> Transparent
+* @desc The background type of the link window
+* @default 2
+* 
+*/
 
 
 
