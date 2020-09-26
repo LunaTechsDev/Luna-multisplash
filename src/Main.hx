@@ -37,15 +37,9 @@ class Main {
     Comment.title('Scene_Map');
 
     Comment.title('Game_Interpreter');
-    FnMacros.jsPatch(true, Game_Interpreter, GameInter);
   }
 
   public static function params() {
     return Params;
   }
-
-  // public static inline function callEvent(mapId: Int, eventId: Int) {
-  //   // Globals.DataMapInfos[mapId].
-  //   Globals.DataMap.events[eventId].pages;
-  // }
 }

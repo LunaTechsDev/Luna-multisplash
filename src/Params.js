@@ -1,6 +1,7 @@
 /*:
 @author LunaTechs - Kino
-@plugindesc An RPGMakerMV/MZ plugin that allows you to call an event from any map in your game<LunaCallEvent>.
+@plugindesc An RPGMakerMV/MZ plugin that lets you create links to websites through clickable
+windows.
 
 @target MV MZ
 

@@ -1,3 +1,3 @@
-# Luna Call Event 
+# Luna Links  
 ### Author LunaTechs - Kino
-> An RPGMakerMV/MZ plugin that allows you to call an event from any map in your game.
+> An RPGMakerMV plugin that allows you to link to websites outside of RMMV/MZ.
