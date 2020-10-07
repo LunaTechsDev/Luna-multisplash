@@ -14,28 +14,16 @@ using core.NumberExtensions;
 using StringTools;
 using utils.Fn;
 
-typedef LinkWindowInfo = {
-  var x: Int;
-  var y: Int;
-  var width: Int;
-  var height: Int;
-  var backgroundType: Int;
-  var link: String;
-  var image: String;
-}
+typedef LParams = {}
 
-typedef LParams = {
-  var linkWindows: Array<LinkWindowInfo>;
-}
-
-@:native('LunaLinks')
-@:expose('LunaLinks')
+@:native('LunaCaseFiles')
+@:expose('LunaCaseFiles')
 class Main {
   public static var Params: LParams = null;
   public static var listener: EventEmitter = Amaryllis.createEventEmitter();
 
   public static function main() {
-    var plugin = Globals.Plugins.filter((plugin) -> ~/<LunaLinks>/ig.match(plugin.description))[0];
+    var plugin = Globals.Plugins.filter((plugin) -> ~/<LunaCaseFiles>/ig.match(plugin.description))[0];
     var params = plugin.parameters;
     untyped Params = {
       linkWindows: JsonEx.parse(params['linkWindows']).map((win) -> JsonEx.parse(win))
