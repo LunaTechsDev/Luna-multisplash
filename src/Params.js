@@ -10,6 +10,8 @@
 
 ==== How To Use ====
 
+Add <LNCFile> to the item note tag to have it qualify as a case file.
+
 Add the case file note tag to an item in the database to have it appear
 in the case file screen.
 
