@@ -2,7 +2,7 @@
 // Luna_CaseFiles.js
 //=============================================================================
 //=============================================================================
-// Build Date: 2020-10-08 20:04:40
+// Build Date: 2020-10-08 20:08:12
 //=============================================================================
 //=============================================================================
 // Made with LunaTea -- Haxe
@@ -144,13 +144,13 @@ class SceneCaseFiles extends Scene_MenuBase {
 	}
 	createCaseFileInfoWindow() {
 		let helpWinOffsetY = this._caseFileHelpWindow.height
-		this._caseFileInfoWindow = new WindowCaseInfo(0,helpWinOffsetY,Graphics.boxWidth / 1.5,Graphics.height - helpWinOffsetY)
+		this._caseFileInfoWindow = new WindowCaseInfo(0,helpWinOffsetY,Graphics.boxWidth / 1.5,Graphics.boxHeight - helpWinOffsetY)
 		this.addWindow(this._caseFileInfoWindow)
 	}
 	createCaseFileListWindow() {
 		let helpWinOffsetY = this._caseFileHelpWindow.height
 		let infoWin = this._caseFileInfoWindow
-		this._caseFilesListWindow = new WindowCaseFilesList(infoWin.width,helpWinOffsetY,Graphics.boxWidth - infoWin.width,Graphics.height - helpWinOffsetY)
+		this._caseFilesListWindow = new WindowCaseFilesList(infoWin.width,helpWinOffsetY,Graphics.boxWidth - infoWin.width,Graphics.boxHeight - helpWinOffsetY)
 		this._caseFilesListWindow.setCaseFiles(this._caseFileList)
 		this._caseFilesListWindow.setHandler("ok",$bind(this,this.caseFileListOkHandler))
 		this.addWindow(this._caseFilesListWindow)
