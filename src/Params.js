@@ -19,6 +19,9 @@ Add <LNCFile> to the item note tag to have it qualify as a case file.
 Add the case file note tag to an item in the database to have it appear
 in the case file screen.
 
+How to Call the scene?
+LunaCaseFiles.gotoCaseFileScene();
+
 MIT License
 Copyright (c) 2020 LunaTechsDev
 Permission is hereby granted, free of charge, to any person obtaining a copy

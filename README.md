@@ -1,3 +1,3 @@
-# Luna Links  
+# Luna Case Files  
 ### Author LunaTechs - Kino
-> An RPGMakerMV plugin that allows you to link to websites outside of RMMV/MZ.
+> An RPGMakerMV/MZ plugin that allows you to create Case File Scene in your game.
