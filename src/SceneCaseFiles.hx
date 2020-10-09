@@ -70,7 +70,7 @@ class SceneCaseFiles extends Scene_MenuBase {
   public function createCaseFileInfoWindow() {
     var helpWinOffsetY = this._caseFileHelpWindow.height;
 
-    this._caseFileInfoWindow = new WindowCaseInfo(0, helpWinOffsetY, Graphics.boxWidth / 1.5, Graphics.height
+    this._caseFileInfoWindow = new WindowCaseInfo(0, helpWinOffsetY, Graphics.boxWidth / 1.5, Graphics.boxHeight
       - helpWinOffsetY);
     this.addWindow(this._caseFileInfoWindow);
   }
@@ -80,7 +80,7 @@ class SceneCaseFiles extends Scene_MenuBase {
 
     var infoWin = this._caseFileInfoWindow;
     this._caseFilesListWindow = new WindowCaseFilesList(infoWin.width, helpWinOffsetY, Graphics.boxWidth
-      - infoWin.width, Graphics.height
+      - infoWin.width, Graphics.boxHeight
       - helpWinOffsetY);
     this._caseFilesListWindow.setCaseFiles(this._caseFileList);
     this._caseFilesListWindow.setHandler('ok', this.caseFileListOkHandler);
