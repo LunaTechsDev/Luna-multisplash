@@ -6,6 +6,10 @@
 
 @help
 
+@param backgroundImageName
+@text Background Image Name
+@desc Background image name fromyour picture folders
+
 
 
 ==== How To Use ====

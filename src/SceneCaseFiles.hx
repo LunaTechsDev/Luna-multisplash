@@ -1,3 +1,7 @@
+import rm.managers.ImageManager;
+import rm.core.Sprite;
+import rm.core.Rectangle;
+import rm.windows.Window_Help;
 import rm.managers.SceneManager;
 import rm.core.TouchInput;
 import rm.core.Input;
@@ -11,6 +15,7 @@ using Lambda;
 @:native('SceneCaseFiles')
 @:keep
 class SceneCaseFiles extends Scene_MenuBase {
+  public var _caseFileHelpWindow: Window_Help;
   public var _caseFilesListWindow: WindowCaseFilesList;
   public var _caseFileInfoWindow: WindowCaseInfo;
   public var _activeCaseFile: CaseFile;
@@ -37,20 +42,46 @@ class SceneCaseFiles extends Scene_MenuBase {
     this.createAllWindows();
   }
 
+  public override function createBackground() {
+    // super.createBackground();
+    this._backgroundSprite = new Sprite();
+    this._backgroundSprite.bitmap = ImageManager.loadPicture(Main.Params.backgroundImageName);
+    this.addChild(this._backgroundSprite);
+    this.setBackgroundOpacity(192);
+  }
+
   public function createAllWindows() {
+    this.createCaseFileHelpWindow();
     this.createCaseFileInfoWindow();
     this.createCaseFileListWindow();
   }
 
+  public function createCaseFileHelpWindow() {
+    #if compileMV
+    this._caseFileHelpWindow = new Window_Help(1);
+    #else
+    var helpRect = new Rectangle(0, 0, Graphics.boxWidth, 75);
+    this._caseFileHelpWindow = new Window_Help(helpRect);
+    #end
+    this._caseFileHelpWindow.setText('Case Files');
+    this.addWindow(this._caseFileHelpWindow);
+  }
+
   public function createCaseFileInfoWindow() {
-    this._caseFileInfoWindow = new WindowCaseInfo(0, 300, Graphics.width / 1.5, Graphics.height - 300);
+    var helpWinOffsetY = this._caseFileHelpWindow.height;
+
+    this._caseFileInfoWindow = new WindowCaseInfo(0, helpWinOffsetY, Graphics.boxWidth / 1.5, Graphics.height
+      - helpWinOffsetY);
     this.addWindow(this._caseFileInfoWindow);
   }
 
   public function createCaseFileListWindow() {
+    var helpWinOffsetY = this._caseFileHelpWindow.height;
+
     var infoWin = this._caseFileInfoWindow;
-    this._caseFilesListWindow = new WindowCaseFilesList(infoWin.width, 0, Graphics.width
-      - infoWin.width, Graphics.height);
+    this._caseFilesListWindow = new WindowCaseFilesList(infoWin.width, helpWinOffsetY, Graphics.boxWidth
+      - infoWin.width, Graphics.height
+      - helpWinOffsetY);
     this._caseFilesListWindow.setCaseFiles(this._caseFileList);
     this._caseFilesListWindow.setHandler('ok', this.caseFileListOkHandler);
     this.addWindow(this._caseFilesListWindow);

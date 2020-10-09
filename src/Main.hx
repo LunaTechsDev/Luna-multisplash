@@ -9,7 +9,9 @@ using core.NumberExtensions;
 using StringTools;
 using utils.Fn;
 
-typedef LParams = {}
+typedef LParams = {
+  var backgroundImageName: String;
+}
 
 @:native('LunaCaseFiles')
 @:expose('LunaCaseFiles')
@@ -19,6 +21,9 @@ class Main {
 
   public static function main() {
     var plugin = Globals.Plugins.filter((plugin) -> ~/<LunaCaseFiles>/ig.match(plugin.description))[0];
+    Params = {
+      backgroundImageName: plugin.parameters['backgroundImageName']
+    }
   }
 
   public static function params() {

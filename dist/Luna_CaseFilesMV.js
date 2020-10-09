@@ -2,7 +2,7 @@
 // Luna_CaseFilesMV.js
 //=============================================================================
 //=============================================================================
-// Build Date: 2020-10-07 19:08:08
+// Build Date: 2020-10-08 20:04:40
 //=============================================================================
 //=============================================================================
 // Made with LunaTea -- Haxe
@@ -16,6 +16,10 @@
 @target MV MZ
 
 @help
+
+@param backgroundImageName
+@text Background Image Name
+@desc Background image name fromyour picture folders
 
 
 
@@ -77,6 +81,8 @@ class LunaCaseFiles {
 				_g.push(v)
 			}
 		}
+		let plugin = _g[0]
+		LunaCaseFiles.Params = { backgroundImageName : plugin.parameters["backgroundImageName"]}
 	}
 	static params() {
 		return LunaCaseFiles.Params;
@@ -119,17 +125,31 @@ class SceneCaseFiles extends Scene_MenuBase {
 		super.create()
 		this.createAllWindows()
 	}
+	createBackground() {
+		this._backgroundSprite = new Sprite()
+		this._backgroundSprite.bitmap = ImageManager.loadPicture(LunaCaseFiles.Params.backgroundImageName)
+		this.addChild(this._backgroundSprite)
+		this.setBackgroundOpacity(192)
+	}
 	createAllWindows() {
+		this.createCaseFileHelpWindow()
 		this.createCaseFileInfoWindow()
 		this.createCaseFileListWindow()
 	}
+	createCaseFileHelpWindow() {
+		this._caseFileHelpWindow = new Window_Help(1)
+		this._caseFileHelpWindow.setText("Case Files")
+		this.addWindow(this._caseFileHelpWindow)
+	}
 	createCaseFileInfoWindow() {
-		this._caseFileInfoWindow = new WindowCaseInfo(0,300,Graphics.width / 1.5,Graphics.height - 300)
+		let helpWinOffsetY = this._caseFileHelpWindow.height
+		this._caseFileInfoWindow = new WindowCaseInfo(0,helpWinOffsetY,Graphics.boxWidth / 1.5,Graphics.height - helpWinOffsetY)
 		this.addWindow(this._caseFileInfoWindow)
 	}
 	createCaseFileListWindow() {
+		let helpWinOffsetY = this._caseFileHelpWindow.height
 		let infoWin = this._caseFileInfoWindow
-		this._caseFilesListWindow = new WindowCaseFilesList(infoWin.width,0,Graphics.width - infoWin.width,Graphics.height)
+		this._caseFilesListWindow = new WindowCaseFilesList(infoWin.width,helpWinOffsetY,Graphics.boxWidth - infoWin.width,Graphics.height - helpWinOffsetY)
 		this._caseFilesListWindow.setCaseFiles(this._caseFileList)
 		this._caseFilesListWindow.setHandler("ok",$bind(this,this.caseFileListOkHandler))
 		this.addWindow(this._caseFilesListWindow)
