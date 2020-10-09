@@ -2,7 +2,7 @@
 // Luna_CaseFilesMV.js
 //=============================================================================
 //=============================================================================
-// Build Date: 2020-10-08 20:08:12
+// Build Date: 2020-10-08 20:10:37
 //=============================================================================
 //=============================================================================
 // Made with LunaTea -- Haxe
@@ -29,6 +29,9 @@ Add <LNCFile> to the item note tag to have it qualify as a case file.
 
 Add the case file note tag to an item in the database to have it appear
 in the case file screen.
+
+How to Call the scene?
+LunaCaseFiles.gotoCaseFileScene()
 
 MIT License
 Copyright (c) 2020 LunaTechsDev
