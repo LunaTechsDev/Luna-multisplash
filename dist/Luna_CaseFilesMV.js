@@ -2,7 +2,7 @@
 // Luna_CaseFilesMV.js
 //=============================================================================
 //=============================================================================
-// Build Date: 2020-10-08 20:10:37
+// Build Date: 2020-10-20 18:57:33
 //=============================================================================
 //=============================================================================
 // Made with LunaTea -- Haxe
@@ -15,14 +15,14 @@
 
 @target MV MZ
 
-@help
+
 
 @param backgroundImageName
 @text Background Image Name
 @desc Background image name fromyour picture folders
 
 
-
+@help
 ==== How To Use ====
 
 Add <LNCFile> to the item note tag to have it qualify as a case file.

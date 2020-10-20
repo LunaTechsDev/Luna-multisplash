@@ -4,14 +4,14 @@
 
 @target MV MZ
 
-@help
+
 
 @param backgroundImageName
 @text Background Image Name
 @desc Background image name fromyour picture folders
 
 
-
+@help
 ==== How To Use ====
 
 Add <LNCFile> to the item note tag to have it qualify as a case file.
