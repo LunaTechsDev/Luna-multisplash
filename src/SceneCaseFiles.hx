@@ -32,8 +32,7 @@ class SceneCaseFiles extends Scene_MenuBase {
       .filter((item) -> ~/<LNCFile>([\S\s]*)<\/LNCFile>/igm.match(item.note))
       .map((item) -> {
         var re = ~/<LNCFile>([\S\s]*)<\/LNCFile>/igm;
-        trace(re.match(item.note));
-        trace(re.matched(0));
+        re.match(item.note);
         return {
           name: item.name,
           text: re.matched(1),
@@ -101,10 +100,8 @@ class SceneCaseFiles extends Scene_MenuBase {
   }
 
   public function processSceneTransition() {
-    if (!this._caseFilesListWindow.active) {
-      if (Input.isTriggered('cancel') || TouchInput.isCancelled()) {
-        SceneManager.pop();
-      }
+    if (Input.isTriggered('cancel') || TouchInput.isCancelled()) {
+      SceneManager.pop();
     }
   }
 

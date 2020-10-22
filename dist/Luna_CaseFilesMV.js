@@ -2,7 +2,7 @@
 // Luna_CaseFilesMV.js
 //=============================================================================
 //=============================================================================
-// Build Date: 2020-10-21 21:03:23
+// Build Date: 2020-10-21 21:13:18
 //=============================================================================
 //=============================================================================
 // Made with LunaTea -- Haxe
@@ -133,8 +133,7 @@ class SceneCaseFiles extends Scene_MenuBase {
 			let i = _g2++
 			let item = _g[i]
 			let re = new EReg("<LNCFile>([\\S\\s]*)</LNCFile>","igm")
-			console.log("src/SceneCaseFiles.hx:35:",re.match(item.note))
-			console.log("src/SceneCaseFiles.hx:36:",re.matched(0))
+			re.match(item.note)
 			result[i] = { name : item.name, text : re.matched(1), image : null}
 		}
 		this._caseFileList = result
@@ -180,10 +179,8 @@ class SceneCaseFiles extends Scene_MenuBase {
 		this.processSceneTransition()
 	}
 	processSceneTransition() {
-		if(!this._caseFilesListWindow.active) {
-			if(Input.isTriggered("cancel") || TouchInput.isCancelled()) {
-				SceneManager.pop()
-			}
+		if(Input.isTriggered("cancel") || TouchInput.isCancelled()) {
+			SceneManager.pop()
 		}
 	}
 	caseFileListOkHandler() {
