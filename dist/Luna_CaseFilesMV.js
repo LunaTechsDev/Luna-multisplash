@@ -2,7 +2,7 @@
 // Luna_CaseFilesMV.js
 //=============================================================================
 //=============================================================================
-// Build Date: 2020-10-20 18:57:33
+// Build Date: 2020-10-21 21:03:23
 //=============================================================================
 //=============================================================================
 // Made with LunaTea -- Haxe
@@ -21,6 +21,10 @@
 @text Background Image Name
 @desc Background image name fromyour picture folders
 
+@param caseFileFontSize
+@text Case File Font Size
+@desc The font size used for the case file information window
+@default 14
 
 @help
 ==== How To Use ====
@@ -70,6 +74,13 @@ class EReg {
 		this.r.s = s
 		return this.r.m != null;
 	}
+	matched(n) {
+		if(this.r.m != null && n >= 0 && n < this.r.m.length) {
+			return this.r.m[n];
+		} else {
+			throw haxe_Exception.thrown("EReg::matched")
+		}
+	}
 }
 EReg.__name__ = true
 class LunaCaseFiles {
@@ -85,7 +96,8 @@ class LunaCaseFiles {
 			}
 		}
 		let plugin = _g[0]
-		LunaCaseFiles.Params = { backgroundImageName : plugin.parameters["backgroundImageName"]}
+		let string = plugin.parameters["caseFileFontSize"]
+		LunaCaseFiles.Params = { backgroundImageName : plugin.parameters["backgroundImageName"], caseFileFontSize : parseInt(string,10)}
 	}
 	static params() {
 		return LunaCaseFiles.Params;
@@ -110,7 +122,7 @@ class SceneCaseFiles extends Scene_MenuBase {
 		while(_g1 < _this.length) {
 			let v = _this[_g1]
 			++_g1
-			if(new EReg("<LNCFile>","ig").match(v.note)) {
+			if(new EReg("<LNCFile>([\\S\\s]*)</LNCFile>","igm").match(v.note)) {
 				_g.push(v)
 			}
 		}
@@ -120,7 +132,10 @@ class SceneCaseFiles extends Scene_MenuBase {
 		while(_g2 < _g3) {
 			let i = _g2++
 			let item = _g[i]
-			result[i] = { name : item.name, text : item.description, image : null}
+			let re = new EReg("<LNCFile>([\\S\\s]*)</LNCFile>","igm")
+			console.log("src/SceneCaseFiles.hx:35:",re.match(item.note))
+			console.log("src/SceneCaseFiles.hx:36:",re.matched(0))
+			result[i] = { name : item.name, text : re.matched(1), image : null}
 		}
 		this._caseFileList = result
 	}
@@ -222,6 +237,25 @@ class WindowCaseInfo extends Window_Base {
 		this._caseText = ""
 		this.refresh()
 	}
+	drawTextEx(text,x,y) {
+		if(text) {
+			let textState = { index : 0, x : x, y : y, left : x, text : "", height : 0}
+			textState.text = this.convertEscapeCharacters(text)
+			textState.height = this.calcTextHeight(textState,false)
+			this.resetFontSettings()
+			while(textState.index < textState.text.length) {
+				let textUpToIndex = textState.text.substring(0,textState.index)
+				if(this.textWidth(textUpToIndex) > this.contentsWidth() && textUpToIndex.charAt(textState.index) != "\n") {
+					textState.text = textUpToIndex + "\n" + textState.text.substring(textState.index,textState.text.length - 1)
+					console.log("src/WindowCaseInfo.hx:52:",textState.text)
+				}
+				this.processCharacter(textState)
+			}
+			return textState.x - x;
+		} else {
+			return 0;
+		}
+	}
 	refresh() {
 		if(this.contents != null) {
 			this.contents.clear()
@@ -233,6 +267,35 @@ class WindowCaseInfo extends Window_Base {
 	}
 }
 WindowCaseInfo.__name__ = true
+class haxe_Exception extends Error {
+	constructor(message,previous,native) {
+		super(message);
+		this.message = message
+		this.__previousException = previous
+		this.__nativeException = native != null ? native : this
+	}
+	get_native() {
+		return this.__nativeException;
+	}
+	static thrown(value) {
+		if(((value) instanceof haxe_Exception)) {
+			return value.get_native();
+		} else if(((value) instanceof Error)) {
+			return value;
+		} else {
+			let e = new haxe_ValueException(value)
+			return e;
+		}
+	}
+}
+haxe_Exception.__name__ = true
+class haxe_ValueException extends haxe_Exception {
+	constructor(value,previous,native) {
+		super(String(value),previous,native);
+		this.value = value
+	}
+}
+haxe_ValueException.__name__ = true
 class haxe_iterators_ArrayIterator {
 	constructor(array) {
 		this.current = 0

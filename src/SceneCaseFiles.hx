@@ -28,13 +28,18 @@ class SceneCaseFiles extends Scene_MenuBase {
   }
 
   public function setupCaseFiles() {
-    this._caseFileList = Globals.GameParty.items().filter((item) -> ~/<LNCFile>/ig.match(item.note)).map((item) -> {
-      return {
-        name: item.name,
-        text: item.description,
-        image: null
-      }
-    });
+    this._caseFileList = Globals.GameParty.items()
+      .filter((item) -> ~/<LNCFile>([\S\s]*)<\/LNCFile>/igm.match(item.note))
+      .map((item) -> {
+        var re = ~/<LNCFile>([\S\s]*)<\/LNCFile>/igm;
+        trace(re.match(item.note));
+        trace(re.matched(0));
+        return {
+          name: item.name,
+          text: re.matched(1),
+          image: null
+        }
+      });
   }
 
   public override function create() {
