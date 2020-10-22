@@ -10,6 +10,10 @@
 @text Background Image Name
 @desc Background image name fromyour picture folders
 
+@param caseFileFontSize
+@text Case File Font Size
+@desc The font size used for the case file information window
+@default 14
 
 @help
 ==== How To Use ====
