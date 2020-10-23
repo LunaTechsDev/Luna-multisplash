@@ -42,6 +42,12 @@ class SceneMultisplash extends RmScene_MenuBase {
     });
   }
 
+  public override function createBackground() {
+    super.createBackground();
+    this._backgroundSprite.filters = [];
+    this.setBackgroundOpacity(255);
+  }
+
   public override function update() {
     super.update();
     this.updateTimer();

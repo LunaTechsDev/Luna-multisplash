@@ -2,7 +2,7 @@
 // Luna_MultisplashMV.js
 //=============================================================================
 //=============================================================================
-// Build Date: 2020-10-22 22:20:47
+// Build Date: 2020-10-23 18:44:00
 //=============================================================================
 //=============================================================================
 // Made with LunaTea -- Haxe
@@ -170,6 +170,11 @@ class SceneMultisplash extends Scene_MenuBase {
 			_gthis._screenImages.push(bitmap)
 		})
 	}
+	createBackground() {
+		super.createBackground()
+		this._backgroundSprite.filters = []
+		this.setBackgroundOpacity(255)
+	}
 	update() {
 		super.update()
 		this.updateTimer()
@@ -186,7 +191,7 @@ class SceneMultisplash extends Scene_MenuBase {
 			this._currentImage = this._screenImages.pop()
 			this.setupScreen(this._currentScreen)
 		} else if(this._currentScreen != null) {
-			haxe_Log.trace("Updating Splash",{ fileName : "src/SceneMultisplash.hx", lineNumber : 64, className : "SceneMultisplash", methodName : "updateSplashScreens", customParams : [this._screenTimer]})
+			haxe_Log.trace("Updating Splash",{ fileName : "src/SceneMultisplash.hx", lineNumber : 70, className : "SceneMultisplash", methodName : "updateSplashScreens", customParams : [this._screenTimer]})
 			this.transitionSplash()
 		}
 		if(this._fadeDuration == 0 && this._fadeSign == -1) {
