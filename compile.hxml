@@ -30,11 +30,11 @@
 --each
 
 --next
--js dist/Luna_CaseFiles.js
+-js dist/Luna_Multisplash.js
 
 --next 
 -D compileMV
--js dist/Luna_CaseFilesMV.js
+-js dist/Luna_MultisplashMV.js
 
 
 --cmd haxe -D gamePath=../games/LunaTechsMZ --run CleanJs

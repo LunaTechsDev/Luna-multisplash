@@ -1,30 +1,23 @@
 /*:
 @author LunaTechs - Kino
-@plugindesc A plugin that allows items to be used as case files in your game <LunaCaseFiles>.
+@plugindesc A plugin that allows you to link splash screens together<LunaMSplash>.
 
 @target MV MZ
 
 
-
-@param backgroundImageName
-@text Background Image Name
-@desc Background image name fromyour picture folders
-
-@param caseFileFontSize
-@text Case File Font Size
-@desc The font size used for the case file information window
-@default 14
+@param splashScreens
+@text Splash Screens 
+@desc The lilst of splash screens to use in your game.
+@type struct<SplashScreen>[]
 
 @help
 ==== How To Use ====
 
-Add <LNCFile> to the item note tag to have it qualify as a case file.
+Simply add your image and your type of transition to the list
+of splash screens.
 
-Add the case file note tag to an item in the database to have it appear
-in the case file screen.
+These pictures must be in your picture folder.
 
-How to Call the scene?
-LunaCaseFiles.gotoCaseFileScene();
 
 MIT License
 Copyright (c) 2020 LunaTechsDev
@@ -44,6 +37,26 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE
 */
+
+/*~struct~SplashScreen:
+* @param image
+* @text Image Name
+* @desc Name of an image in your pictures folder
+* @default Actor1_1
+*
+* @param splashType
+* @text Splash Type click or timer
+* @desc The transition type of the splash screen (click or timer)
+* @default click
+*
+* @param timer
+* @text The amount of time in frames to keep the splash up when type is timer. 
+* @desc The transition type of the splash screen
+* @default 300
+* 
+*/
+
+
 
 
 
