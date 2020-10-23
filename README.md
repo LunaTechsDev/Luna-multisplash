@@ -1,3 +1,3 @@
-# Luna Case Files  
+# Luna Multisplash  
 ### Author LunaTechs - Kino
-> An RPGMakerMV/MZ plugin that allows you to create Case File Scene in your game.
+> An RPGMakerMV/MZ plugin that allows you to show multiple splash screens one after another.
