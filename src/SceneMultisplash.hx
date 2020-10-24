@@ -48,6 +48,13 @@ class SceneMultisplash extends RmScene_MenuBase {
     this.setBackgroundOpacity(255);
   }
 
+  #if compileMV
+  #else
+  public override function createButtons() {
+    // Do nothing
+  }
+  #end
+
   public override function update() {
     super.update();
     this.updateTimer();
